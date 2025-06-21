@@ -1,1 +1,1 @@
-<?php echo json_encode($_POST); ?>
+<?php echo json_encode($_POST);

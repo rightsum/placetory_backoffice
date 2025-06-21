@@ -16,11 +16,12 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function index(Request $request)
+    public function index(Request $request): \Illuminate\Contracts\View\View
     {
         if (view()->exists($request->path())) {
             return view($request->path());
         }
+
         return view('pages-404');
     }
 }
