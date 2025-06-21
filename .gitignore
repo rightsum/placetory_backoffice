@@ -87,3 +87,7 @@ _ide_helper_models.php
 # Package files
 *.tar.gz
 *.zip
+
+**/caddy
+frankenphp
+frankenphp-worker.php

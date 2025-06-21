@@ -1,0 +1,26 @@
+# Ignore files for Docker build
+.git
+.gitignore
+.env.example
+.env.local
+.env.*.local
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+storage/logs/*
+!storage/logs/.gitkeep
+bootstrap/cache/*
+!bootstrap/cache/.gitkeep
+tests/
+.phpunit.result.cache
+vendor/
+docs/
+deploy/README.md
+deploy/setup.sh
+deploy/migrate.sh
+deploy/cloud-run.yaml
+deploy/.env.production
+deploy/.dockerignore
+Makefile
+README.md

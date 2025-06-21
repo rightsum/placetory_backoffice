@@ -30,6 +30,24 @@ install: ## Install PHP and Node.js dependencies
 dev: ## Start development server
 	php artisan serve
 
+# Octane High-Performance Server Commands
+octane-start: ## Start Octane server with FrankenPHP
+	php artisan octane:start
+
+octane-dev: ## Start Octane server with file watching for development
+	php artisan octane:start --watch
+
+octane-stop: ## Stop Octane server
+	php artisan octane:stop
+
+octane-reload: ## Reload Octane workers (useful after code changes)
+	php artisan octane:reload
+
+octane-status: ## Check Octane server status
+	php artisan octane:status
+
+serve: octane-dev ## Alias for octane-dev (replaces default serve with Octane)
+
 build: ## Build frontend assets for production
 	npm run build
 
@@ -44,6 +62,19 @@ clean: ## Clear Laravel caches and logs
 # Git workflow helpers (based on copilot instructions)
 pre-commit: quality-check ## Run quality checks before committing (recommended)
 	@echo "✅ Pre-commit checks passed! Ready to commit."
+
+# Deployment Commands
+deploy: ## Deploy to Google Cloud Run (requires configuration)
+	@echo "🚀 Starting deployment to Google Cloud Run..."
+	cd deploy && ./deploy.sh
+
+deploy-migrate: ## Run database migrations on Cloud Run
+	@echo "🗄️  Running database migrations..."
+	cd deploy && ./migrate.sh
+
+deploy-build: ## Build Docker image for deployment
+	@echo "🐳 Building Docker image..."
+	gcloud builds submit --tag gcr.io/$$GOOGLE_CLOUD_PROJECT/placetory-backoffice -f deploy/Dockerfile .
 
 # Database commands
 migrate: ## Run database migrations
